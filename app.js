@@ -11,11 +11,20 @@ app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
     const name = req.cookies.username;
-    res.render('index', { name });
+    if (name) {
+        res.render('index', { name });
+    } else {
+        res.render('hello');
+    }
 });
 
 app.get('/hello', (req, res) => {
-    res.render('hello');
+    const name = req.cookies.username;
+    if (name) {
+        res.redirect('/');
+    } else {
+        res.render('hello');
+    }
 });
 
 app.post('/hello', (req, res) => {
