@@ -6,7 +6,6 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
@@ -35,6 +34,18 @@ app.post('/hello', (req, res) => {
 app.post('/goodbye', (req, res) => {
     res.clearCookie('username');
     res.redirect('/hello');
+});
+
+app.use((err, req, res ,next) => {
+    const err = new Error('Not Found, Problematic, You must have gotten something wrong');
+    err.status = 404;
+    next(err);
+});
+
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    res.render('error');
 });
 
 app.listen(8080, () => {
