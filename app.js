@@ -36,7 +36,7 @@ app.post('/goodbye', (req, res) => {
     res.redirect('/hello');
 });
 
-app.use((err, req, res ,next) => {
+app.use((req, res ,next) => {
     const err = new Error('Not Found, Problematic, You must have gotten something wrong');
     err.status = 404;
     next(err);
