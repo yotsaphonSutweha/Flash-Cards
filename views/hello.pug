@@ -1,0 +1,6 @@
+extends layout.pug
+block content
+    form(action='/hello', method='post')
+        lebel Enter your name
+            input(type="text" name="username")
+        button(type='submit') Let's go!

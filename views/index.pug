@@ -1,0 +1,7 @@
+extends layout.pug
+
+block content
+    section#content
+    h1 Greetings, #{name}
+    form(action='/goodbye', method='post')
+        button(type='submit') Goodbye
