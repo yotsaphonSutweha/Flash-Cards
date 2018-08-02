@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h2= text
+    if hint
+        p Hint: #{hint}
+    a(href=`${id}?side=${sideToShow}`)= sideToShowDisplay
+    br
+    a(href=`/cards`) Next
